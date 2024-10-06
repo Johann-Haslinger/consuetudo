@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import supabaseClient from "../lib/supabase";
 import { Streak, SupabaseTable } from "../types";
+import { useSession } from "./useSession";
 
 export const useStreaks = () => {
   const [streaks, setStreaks] = useState<Streak[]>([]);
+  const { userId } = useSession();
 
   useEffect(() => {
     const fetchStreaks = async () => {
@@ -22,5 +24,17 @@ export const useStreaks = () => {
     fetchStreaks();
   }, []);
 
-  return streaks;
+  const addStreak = async (streak: Streak) => {
+    console.log("Adding streak", streak, userId);
+    const { error } = await supabaseClient.from(SupabaseTable.Streaks).insert([{ ...streak, user_id: userId }]);
+
+    if (error) {
+      console.error("Error adding streak", error);
+      return;
+    }
+
+    setStreaks([...streaks, streak]);
+  };
+
+  return { streaks, addStreak };
 };

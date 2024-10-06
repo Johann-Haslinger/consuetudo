@@ -1,23 +1,19 @@
-import { IoAdd } from "react-icons/io5";
 import AuthUI from "./components/auth-ui/AuthUI";
-import { NavBarButton, NavigationBar, Spacer, Title, View } from "./components/common";
-import StreakCell from "./components/streaks/StreakCell";
-import { useSession } from "./hooks";
-import { useStreaks } from "./hooks/useStreaks";
+import { NavigationBar, Spacer, Title, View } from "./components/common";
+import { AddStreakButton, StreakCell } from "./components/streaks";
+import { useSession, useStreaks } from "./hooks";
 
 const App = () => {
-  const streaks = useStreaks();
+  const {streaks, addStreak} = useStreaks();
   const { isLoggedIn } = useSession();
 
-  return !isLoggedIn ? (
+  return isLoggedIn == false ? (
     <AuthUI />
   ) : (
     <div>
-      <View>
+      <View viewType="baseView">
         <NavigationBar>
-          <NavBarButton>
-            <IoAdd />
-          </NavBarButton>
+          <AddStreakButton addStreak={addStreak} />
         </NavigationBar>
         <Spacer />
         <Title>Streaks</Title>
