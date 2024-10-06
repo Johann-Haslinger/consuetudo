@@ -1,0 +1,25 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "cSpell.words": [
+    "Herunterladen",
+    "klicken",
+    "langchain",
+    "Löschen",
+    "Öffnen",
+    "OPENAI",
+    "Sankey",
+    "SAPIENTOR",
+    "Spina",
+    "storyboarding",
+    "supabase"
+  ],
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

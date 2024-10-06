@@ -1,8 +1,6 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-
-  darkMode: 'selector',
-
+  darkMode: 'media',
   theme: {
     fontFamily: {},
     extend: {
